@@ -47,9 +47,9 @@
               "Title": "TaskRepository.cs",
               "DocumentMoniker": "D:\\ASP.NET Development\\TaskManagement\\TaskManagement.Infrastructure\\Repositories\\TaskRepository.cs",
               "RelativeDocumentMoniker": "TaskManagement.Infrastructure\\Repositories\\TaskRepository.cs",
-              "ToolTip": "D:\\ASP.NET Development\\TaskManagement\\TaskManagement.Infrastructure\\Repositories\\TaskRepository.cs*",
-              "RelativeToolTip": "TaskManagement.Infrastructure\\Repositories\\TaskRepository.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ToolTip": "D:\\ASP.NET Development\\TaskManagement\\TaskManagement.Infrastructure\\Repositories\\TaskRepository.cs",
+              "RelativeToolTip": "TaskManagement.Infrastructure\\Repositories\\TaskRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA5wAcAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-16T18:20:41.27Z",
               "EditorCaption": ""
@@ -62,7 +62,7 @@
               "RelativeDocumentMoniker": "TaskManagement.Application\\Interfaces\\ITaskRepository.cs",
               "ToolTip": "D:\\ASP.NET Development\\TaskManagement\\TaskManagement.Application\\Interfaces\\ITaskRepository.cs",
               "RelativeToolTip": "TaskManagement.Application\\Interfaces\\ITaskRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-16T17:19:25.002Z",
               "EditorCaption": ""
