@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TaskManagement.Domain.Entities
 {
-    internal class TaskItem
+    public class TaskItem
     {
         public Guid id { get; set; }
         public string Title { get; set; } = string.Empty;
