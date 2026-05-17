@@ -20,6 +20,7 @@ namespace TaskManagement.Api.Controllers
             _validator = validator;
         }
 
+        // Create A Task
         [HttpPost]
         public async Task<IActionResult> CreateTask([FromBody] CreateTaskDto dto)
         {
@@ -47,17 +48,29 @@ namespace TaskManagement.Api.Controllers
         }
 
 
+        // Get All Tasks
         [HttpGet]
         public async Task<IActionResult> GetAllTasks()
         {
 
-            await _repository.GetAllAsync();
+            var tasks = await _repository.GetAllAsync();
 
-            return Ok();
+            var taskDtos = tasks.Select(task => new TaskDto 
+            {
+                Id = task.Id,
+                Title = task.Title,
+                Description = task.Description,
+                CreatedAt = task.CreatedAt,
+                UpdatedAt = task.UpdatedAt,
+                IsCompleted = task.IsCompleted
+            });
+
+            return Ok(taskDtos);
 
         }
 
 
+        // Get A Task
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTaskById(Guid id)
         {
@@ -65,7 +78,7 @@ namespace TaskManagement.Api.Controllers
 
             if (task == null) return NotFound();
 
-            var getTask = new TaskDto
+            var taskDto = new TaskDto
             {
                 Id = task.Id,
                 Title = task.Title,
@@ -75,10 +88,11 @@ namespace TaskManagement.Api.Controllers
                 IsCompleted = task.IsCompleted
             };
 
-            return Ok(getTask);
+            return Ok(taskDto);
         }
 
 
+        // Update A Task
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(Guid id, [FromBody] UpdateTaskDto dto)
         {
@@ -101,7 +115,7 @@ namespace TaskManagement.Api.Controllers
         }
 
 
-
+        // Delete A Task
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(Guid id)
         {
