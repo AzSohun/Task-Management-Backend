@@ -22,17 +22,16 @@ namespace TaskManagement.Api.Controllers
             _validator = validator;
         }
 
-
         [HttpPost]
         public async Task<IActionResult> CreateTask([FromBody] CreateTaskDto dto)
         {
 
-            var validationResult = await _validator.ValidateAsync(dto);
-            if (validationResult.IsValid)
-            {
-                return BadRequest(validationResult.Errors);
-            }
+            var validatorResult = await _validator.ValidateAsync(dto);
 
+            if (!validatorResult.IsValid)
+            {
+                return BadRequest(validatorResult.Errors);
+            }
 
             var taskItem = new TaskItem
             {
@@ -46,8 +45,8 @@ namespace TaskManagement.Api.Controllers
             await _repository.AddAsync(taskItem);
 
             return CreatedAtAction(nameof(GetTaskById), new { id = taskItem.Id }, taskItem);
+            
         }
-
 
 
         [HttpGet("{id}")]
@@ -57,8 +56,6 @@ namespace TaskManagement.Api.Controllers
 
             return Ok(task);
         }
-
-
 
     }
 }
