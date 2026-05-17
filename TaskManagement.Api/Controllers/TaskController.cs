@@ -1,9 +1,7 @@
 ﻿using FluentValidation;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagement.Application.DTOs;
 using TaskManagement.Application.Interfaces;
-using TaskManagement.Application.Validators;
 using TaskManagement.Domain.Entities;
 
 namespace TaskManagement.Api.Controllers
