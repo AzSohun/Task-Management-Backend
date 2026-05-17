@@ -44,6 +44,18 @@ namespace TaskManagement.Api.Controllers
             };
 
             await _repository.AddAsync(taskItem);
+
+            return CreatedAtAction(nameof(GetTaskById), new { id = taskItem.Id }, taskItem);
+        }
+
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetTaskById(Guid id)
+        {
+            var task = await _repository.GetByIdAsync(id);
+
+            return Ok(task);
         }
 
 
