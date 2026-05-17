@@ -5,7 +5,7 @@ using TaskManagement.Infrastructure.Data;
 
 namespace TaskManagement.Infrastructure.Repositories
 {
-    internal class TaskRepository: ITaskRepository
+    public class TaskRepository: ITaskRepository
     {
 
         private readonly ApplicationDbContext _context;
