@@ -47,12 +47,73 @@ namespace TaskManagement.Api.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllTasks()
+        {
+
+            await _repository.GetAllAsync();
+
+            return Ok();
+
+        }
+
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTaskById(Guid id)
         {
             var task = await _repository.GetByIdAsync(id);
 
-            return Ok(task);
+            if (task == null) return NotFound();
+
+            var getTask = new TaskDto
+            {
+                Id = task.Id,
+                Title = task.Title,
+                Description = task.Description,
+                CreatedAt = task.CreatedAt,
+                UpdatedAt = task.UpdatedAt,
+                IsCompleted = task.IsCompleted
+            };
+
+            return Ok(getTask);
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTask(Guid id, [FromBody] UpdateTaskDto dto)
+        {
+
+            var exsitingTask = await _repository.GetByIdAsync(id);
+
+            if (exsitingTask == null) return NotFound();
+
+
+            exsitingTask.Title = dto.Title;
+            exsitingTask.Description = dto.Description;
+            exsitingTask.IsCompleted = dto.IsCompleted;
+            exsitingTask.UpdatedAt = DateTime.UtcNow;
+            
+
+            await _repository.UpdateAsync(exsitingTask);
+
+            return NoContent();
+
+        }
+
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTask(Guid id)
+        {
+
+            var existingTask = await _repository.GetByIdAsync(id);
+
+            if (existingTask == null) return NotFound();
+
+            await _repository.DeleteAsync(id);
+
+            return NoContent();
+
         }
 
     }
