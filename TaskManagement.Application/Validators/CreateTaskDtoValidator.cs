@@ -6,7 +6,7 @@ using TaskManagement.Application.DTOs;
 
 namespace TaskManagement.Application.Validators
 {
-    internal class CreateTaskDtoValidator: AbstractValidator<CreateTaskDro>
+    public class CreateTaskDtoValidator: AbstractValidator<CreateTaskDto>
     {
 
         public CreateTaskDtoValidator()

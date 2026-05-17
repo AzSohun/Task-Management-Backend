@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TaskManagement.Application.DTOs
 {
-    internal class CreateTaskDro
+    public class CreateTaskDto
     {
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
