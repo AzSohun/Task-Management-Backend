@@ -1,9 +1,28 @@
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using TaskManagement.Application.DTOs;
+using TaskManagement.Application.Interfaces;
+using TaskManagement.Application.Validators;
+using TaskManagement.Infrastructure.Data;
+using TaskManagement.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<IValidator<CreateTaskDto>, CreateTaskDtoValidator>();
+
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
