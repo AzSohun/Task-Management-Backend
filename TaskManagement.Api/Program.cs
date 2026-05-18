@@ -24,6 +24,17 @@ builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<IValidator<CreateTaskDto>, CreateTaskDtoValidator>();
 
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+        .WithHeaders()
+        .WithHeaders(); // Allows CRUD
+    });
+});
+
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
@@ -36,6 +47,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAngularApp");
 
 app.UseAuthorization();
 
